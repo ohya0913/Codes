@@ -1,0 +1,392 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace computer
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        Double ago=0, later=0;
+        int choose = 0;
+        private void button0_Click(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text == "0")
+            {
+                this.textBox1.Text = "";
+            }
+            this.textBox1.Text += "0";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text == "0")
+            {
+                this.textBox1.Text = "";
+            }
+            this.textBox1.Text += "1";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text == "0")
+            {
+                this.textBox1.Text = "";
+            }
+            this.textBox1.Text += "2";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text == "0")
+            {
+                this.textBox1.Text = "";
+            }
+            this.textBox1.Text += "3";
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text == "0")
+            {
+                this.textBox1.Text = "";
+            }
+            this.textBox1.Text += "4";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text == "0")
+            {
+                this.textBox1.Text = "";
+            }
+            this.textBox1.Text += "5";
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text == "0")
+            {
+                this.textBox1.Text = "";
+            }
+            this.textBox1.Text += "6";
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text == "0")
+            {
+                this.textBox1.Text = "";
+            }
+            this.textBox1.Text += "7";
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text == "0")
+            {
+                this.textBox1.Text = "";
+            }
+            this.textBox1.Text += "8";
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text == "0")
+            {
+                this.textBox1.Text = "";
+            }
+            this.textBox1.Text += "9";
+        }
+
+        private void buttonPoint_Click(object sender, EventArgs e)
+        {
+            this.textBox1.Text += ".";
+        }
+        
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            if (choose != 1 && choose != 0 && this.textBox1.Text != "0")
+            {
+                switch (choose)
+                {
+                    case 2:
+                        ago = ago - (Convert.ToDouble(this.textBox1.Text));
+                        this.label1.Text = ago + " +";
+                        this.textBox1.Text = "0";
+                        break;
+                    case 3:
+                        ago = ago * (Convert.ToDouble(this.textBox1.Text));
+                        this.label1.Text = ago + " +";
+                        this.textBox1.Text = "0";
+                        break;
+                    case 4:
+                        ago = ago / (Convert.ToDouble(this.textBox1.Text));
+                        this.label1.Text = ago + " +";
+                        this.textBox1.Text = "0";
+                        break;
+                }
+            }
+            
+            
+            choose = 1;
+                                   
+            if (this.textBox1.Text != "0") 
+            {
+                later = Convert.ToDouble(this.textBox1.Text);
+                
+                ago = Add(later);
+                this.label1.Text = ago + " +";
+                this.textBox1.Text = "0";
+            }
+            else
+            {
+                this.label1.Text = ago + " +";
+            }
+                        
+        }
+
+        private void buttonSubtraction_Click(object sender, EventArgs e)
+        {
+            if (choose != 2 && choose != 0 && this.textBox1.Text != "0")
+            {
+                switch (choose)
+                {
+                    case 1:
+                        ago = ago + (Convert.ToDouble(this.textBox1.Text));
+                        this.label1.Text = ago + " -";
+                        this.textBox1.Text = "0";
+                        break;
+                    case 3:
+                        ago = ago * (Convert.ToDouble(this.textBox1.Text));
+                        this.label1.Text = ago + " -";
+                        this.textBox1.Text = "0";
+                        break;
+                    case 4:
+                        ago = ago / (Convert.ToDouble(this.textBox1.Text));
+                        this.label1.Text = ago + " -";
+                        this.textBox1.Text = "0";
+                        break;
+                }
+            }
+            
+            choose = 2;
+
+            if (this.textBox1.Text != "0")
+            {
+                later = Convert.ToDouble(this.textBox1.Text);
+                
+                ago = Sub(later);
+                this.label1.Text = ago + " -";
+                this.textBox1.Text = "0";
+            }
+            else
+            {
+                this.label1.Text = ago + " -";
+            }
+            
+        }
+
+        private void buttonMultiply_Click(object sender, EventArgs e)
+        {
+            if (choose != 3 && choose != 0 && this.textBox1.Text != "0")
+            {
+                switch (choose)
+                {
+                    case 2:
+                        ago = ago - (Convert.ToDouble(this.textBox1.Text));
+                        this.label1.Text = ago + " *";
+                        this.textBox1.Text = "0";
+                        break;
+                    case 1:
+                        ago = ago + (Convert.ToDouble(this.textBox1.Text));
+                        this.label1.Text = ago + " *";
+                        this.textBox1.Text = "0";
+                        break;
+                    case 4:
+                        ago = ago / (Convert.ToDouble(this.textBox1.Text));
+                        this.label1.Text = ago + " *";
+                        this.textBox1.Text = "0";
+                        break;
+                }
+            }
+
+            
+            choose = 3;
+            
+            if (this.textBox1.Text != "0")
+            {
+                later = Convert.ToDouble(this.textBox1.Text);
+                
+                ago = Mul(later);
+                this.label1.Text = ago + " *";
+                this.textBox1.Text = "0";
+            }
+            else
+            {
+                this.label1.Text = ago + " *";
+            }
+        }
+
+        private void buttonDivision_Click(object sender, EventArgs e)
+        {
+            if (choose != 4 && choose != 0 && this.textBox1.Text != "0")
+            {
+                switch (choose)
+                {
+                    case 2:
+                        ago = ago - (Convert.ToDouble(this.textBox1.Text));
+                        this.label1.Text = ago + " /";
+                        this.textBox1.Text = "0";
+                        break;
+                    case 3:
+                        ago = ago * (Convert.ToDouble(this.textBox1.Text));
+                        this.label1.Text = ago + " /";
+                        this.textBox1.Text = "0";
+                        break;
+                    case 1:
+                        ago = ago + (Convert.ToDouble(this.textBox1.Text));
+                        this.label1.Text = ago + " /";
+                        this.textBox1.Text = "0";
+                        break;
+                }
+            }
+
+
+            choose = 4;
+
+            if (this.textBox1.Text != "0")
+            {
+                later = Convert.ToDouble(this.textBox1.Text);
+                
+                ago = Div(later);
+                this.label1.Text = ago + " /";
+                this.textBox1.Text = "0";
+            }
+            else
+            {
+                this.label1.Text = ago + " /";
+            }
+        }
+
+        private void buttonclear_Click(object sender, EventArgs e)
+        {
+            this.textBox1.Text = "0";
+            this.label1.Text = "";
+            ago = 0;
+            later = 0;
+            choose = 0;
+        }
+
+        private void buttonEqual_Click(object sender, EventArgs e)
+        {
+            this.label1.Text = "";
+            if (choose == 0)
+            {
+                this.textBox1.Text = ago.ToString();
+            }
+            else
+            {
+                later = Convert.ToDouble(this.textBox1.Text);
+                
+                switch (choose)
+                {
+                    case 1:
+                        ago = ago + later;
+                        this.textBox1.Text = ago.ToString();
+                        ago = 0;
+                        choose = 0;
+                        break;
+                    case 2:
+                        ago = ago - later;
+                        this.textBox1.Text = ago.ToString();
+                        ago = 0;
+                        choose = 0;
+                        break;
+                    case 3:
+                        ago = ago * later;
+                        this.textBox1.Text = ago.ToString();
+                        ago = 0;
+                        choose = 0;
+                        break;
+                    case 4:
+                        ago = ago / later;
+                        this.textBox1.Text = ago.ToString();
+                        ago = 0;
+                        choose = 0;
+                        break;
+                }
+            }
+
+        }
+
+
+
+        private double Add(double later)
+        {
+            if (ago != 0)
+            {
+                ago += later;
+            }
+            else
+            {
+                ago = later;
+            }
+            
+            
+            
+            
+            return ago;
+        }
+        
+        private double Sub(double later)
+        {
+            if (ago != 0)
+            {
+                ago -= later;
+            }
+            else
+            {
+                ago=later;
+            }
+            return ago;
+        }
+        
+        private double Mul(double later)
+        {
+            if (ago != 0)
+            {
+                ago *= later;
+            }
+            else
+            {
+                ago = later;
+            }
+            return ago;
+        }
+        
+        private double Div(double later)
+        {
+            if (ago != 0)
+            {
+                ago /= later;
+            }
+            else
+            {
+                ago = later;
+            }
+            return ago;
+        }
+
+
+    }
+}
