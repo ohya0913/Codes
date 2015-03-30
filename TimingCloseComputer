@@ -1,0 +1,106 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CloseOnTime
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            for (int i = 1; i < 25; i++)
+            {
+                this.comboBoxHour.Items.Add(i);
+            }
+
+            for (int i = 0; i < 60; i++)
+            {
+                this.comboBoxMin.Items.Add(i);
+            }
+            this.timerNow.Enabled = true;
+            this.timerNow.Interval = 1000;
+            this.labelSeting.Hide();
+
+        }
+
+       
+
+        private void labelHide_Click(object sender, EventArgs e)
+        {
+            this.notifyIcon1.Visible = true;
+            this.Hide();
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.notifyIcon1.Visible = false;
+            this.Show();
+        }
+        Process process = new Process();
+        private void buttonSet_Click(object sender, EventArgs e)
+        {
+            this.timerSet.Enabled = true;
+            this.timerSet.Interval = 1000;
+            this.comboBoxHour.Enabled = false;
+            this.comboBoxMin.Enabled = false;
+            int hour = Convert.ToInt32(this.comboBoxHour.Text);
+            int min = Convert.ToInt32(this.comboBoxMin.Text);
+            int sec=0;
+            int nowHour = DateTime.Now.Hour;
+            int nowMin = DateTime.Now.Minute;
+            int nowSec = DateTime.Now.Second;
+            hour -= nowHour;
+            min -= nowMin;
+            sec -= nowSec;
+            sec = (hour * 60 * 60) + (min * 60) + sec;
+
+            process.StartInfo.FileName = "shutdown.exe";
+            process.StartInfo.Arguments = "-s -t "+sec;
+            process.Start();
+        }
+        int count = 1;
+        private void timerSet_Tick(object sender, EventArgs e)
+        {
+            
+            if (count % 2 != 0)
+            {
+                this.labelSeting.Show();
+            }
+            else if (count % 2 == 0)
+            {
+                this.labelSeting.Hide();
+            }
+            count++;
+            
+        }
+
+        private void timerNow_Tick(object sender, EventArgs e)
+        {
+            this.labelTime.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.timerSet.Enabled = false;
+            this.comboBoxHour.Enabled = true;
+            this.comboBoxMin.Enabled = true;
+            this.labelSeting.Hide();
+            process.StartInfo.FileName = "shutdown.exe";
+            process.StartInfo.Arguments = " -a";
+            process.Start();
+            count = 1;
+        }
+    }
+}
